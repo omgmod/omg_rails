@@ -35,7 +35,7 @@
 #  fk_rails_...  (ruleset_id => rulesets.id)
 #
 class SnapshotCompany < Company
-  LIMIT = 10.freeze
+  LIMIT = 12.freeze
 
   def entity
     Entity.new(self)

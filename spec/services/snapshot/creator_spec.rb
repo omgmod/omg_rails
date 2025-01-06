@@ -299,7 +299,7 @@ RSpec.describe Snapshot::Creator do
 
     context "when the player has the limit of snapshot companies" do
       before do
-        10.times do
+        12.times do
           create :snapshot_company, player: player, ruleset: ruleset
         end
       end
