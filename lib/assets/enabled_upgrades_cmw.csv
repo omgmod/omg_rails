@@ -39,6 +39,7 @@ two_boys_at,CMW.BOYSAT,Boys AT Rifles,"Handheld anti tank rifles effective again
 heroic_charge,CMW.HEROIC_CHARGE,Heroic Charge,"The LT and surrounding infantry break suppression, move faster, fire more quickly, and receive less damage for a brief period of time.",ability,british,,,0,60,0,0,0,0,0,1,,,lt
 bren_carrier_button,CMW.BUTTON_BREN,Bren Carrier Button,"The targeted enemy vehicle or tank is prevented from firing or moving quickly.",ability,british,,,0,35,0,0,0,0,0,1,,,bren_carrier
 bren_carrier_repair,ALLY.REPAIR_MANUAL,Bren Carrier Repair,"Unlocks the Bren Carrier Self Repair Ability.",ability,british,,,0,35,0,0,0,0,0,1,,,bren_carrier
+universal_carrier_repair,ALLY.REPAIR_MANUAL,Universal Carrier Repair,"Unlocks the Universal Carrier Self Repair Ability.",ability,british,,,0,35,0,0,0,0,0,1,,,universal_carrier
 stag_50_cal,CMW.STAG50,Staghound .50 Cal,Powerful top-mounted .50 cal machine gun,single_weapon,british,,,0,90,0,0,0,1,0,1,,,staghound
 cmw_tank_commander,CMW.TANK_COMMANDER,Tank Commander,Increases the tank's line of sight range,passive,british,,,0,20,0,0,0,0,0,1,,,stuart
 cmw_tank_commander,CMW.TANK_COMMANDER,Tank Commander,Increases the tank's line of sight range,passive,,engineers,,0,20,0,0,0,0,0,1,,,stuart_flame
