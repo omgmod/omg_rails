@@ -160,7 +160,7 @@ da_id,internal_name,const,tree,branch,tier,description,vp
 223,Tier 3 alpha,OMGDOCUPG.CMW.RCA.TR3.B1.T3,33,1,3,,1000
 44,Toolboxes,OMGDOCUPG.CMW.RCA.TR3.B2.T1,33,2,1,"Self Repair on Bren Carriers and Bren Gun Carriers now have 0.80 speed reduction instead of 0.35 speed reduction. In addition, the cooldown on Self Repair has been reduced by 15%. Repair manuals may be purchased to allow garrisoned combat repairs.",1
 150,Carrier Tactics,OMGDOCUPG.CMW.RCA.TR3.B2.T2,33,2,2,Lockdown ability given to Bren Gun Carrier and Universal carrier which increases accuracy and suppression by 25%. Acceleration and max speed also increased 20%. Infantry in carriers retain 60% of thier reveal radius.,2
-224,Spare Room for Ammo,OMGDOCUPG.CMW.RCA.TR3.B2.T3,33,2,3,Units inside universal carriers reload 25% faster.,1
+224,Airburst Rounds,OMGDOCUPG.CMW.RCA.TR3.B2.T3,33,2,3,25 Pounders gain Terror style airburst.,3
 100,Stuka Terror Dive,OMGDOCUPG.PE.LUFTWAFFE.TR1.B1.T1,25,1,1,Stuka Terror Dive Offmap available for purchase. Suppresses infantry in an area you select. 45 mu per use.,3
 175,Butterfly Bomblets,OMGDOCUPG.PE.LUFTWAFFE.TR1.B1.T2,25,1,2,Butterfly Bombs now available for purchase. 85 mu per use.,3
 249,Taking Notes On The Way Down,OMGDOCUPG.PE.LUFTWAFFE.TR1.B1.T3,25,1,3,Airborne units gain additional line of sight while paradropping.,2
