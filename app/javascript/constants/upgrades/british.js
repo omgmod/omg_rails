@@ -60,7 +60,8 @@ export const PIAT = 'piat'
 export const PIAT_COMMANDO_BOYS_AT = 'piat_commando_boys_at'
 export const PIAT_COMMANDO_BRENS = 'piat_commando_brens'
 export const PIAT_COMMANDO_FOUR = 'piat_commando_four'
-export const REPAIR_MANUALS = 'repair_manuals'
+export const BREN_CARRIER_REPAIR = 'bren_carrier_repair'
+export const UNIVERSAL_CARRIER_REPAIR = 'universal_carrier_repair'
 export const RIFLE_GRENADE = 'rifle_grenade'
 export const STAG_50_CAL = 'stag_50_cal'
 export const STUART_CANISTER_ROUND = 'stuart_canister_round'
@@ -102,7 +103,8 @@ export const upgradeImageMapping = {
   [PIAT_COMMANDO_BOYS_AT]: boys_at,
   [PIAT_COMMANDO_BRENS]: bren_gun,
   [PIAT_COMMANDO_FOUR]: piat_commando_four,
-  [REPAIR_MANUALS]: repair_manuals,
+  [BREN_CARRIER_REPAIR]: repair_manuals,
+  [UNIVERSAL_CARRIER_REPAIR]: repair_manuals,
   [RIFLE_GRENADE]: rifle_grenade,
   [STAG_50_CAL]: stag_50_cal,
   [STUART_CANISTER_ROUND]: stuart_canister_round,
