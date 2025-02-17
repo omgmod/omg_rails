@@ -42,7 +42,8 @@ class BattleService
       battle = Battle.create!(name: name, size: size, ruleset: ruleset)
       BattlePlayer.create!(battle: battle, player: @player, company: company, side: company.side)
 
-      Rails.logger.info("[BattleService] Created battle #{battle.id} by #{@player.name}")
+      # Rails.logger.info("[BattleService] Created battle #{battle.id} by #{@player.name}")
+
       # Broadcast
       message_hash = { type: CREATED_BATTLE, battle: battle.reload }
       # battle_message = Battle::Entity.represent(battle, type: :include_players)
