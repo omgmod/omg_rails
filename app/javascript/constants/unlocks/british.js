@@ -12,6 +12,7 @@ import ross_rifles from '../../../assets/images/doctrines/british/unlocks/canadi
 import spare_room_for_ammo from '../../../assets/images/doctrines/british/unlocks/canadians/spare_room_for_ammo.png'
 import supercharged_shells from '../../../assets/images/doctrines/british/unlocks/canadians/supercharged_shells.png'
 import toolboxes from '../../../assets/images/doctrines/british/unlocks/canadians/toolboxes.png'
+import airburst_shells from '../../../assets/images/doctrines/british/unlocks/canadians/airburst_shells.png'
 //Commandos
 import _25_pounder_artillery_barrage from '../../../assets/images/doctrines/british/unlocks/commandos/25_pounder_artillery_barrage.png'
 import commando_fire_teams from '../../../assets/images/doctrines/british/unlocks/commandos/commando_fire_teams.png'
@@ -59,6 +60,7 @@ export const ROSS_RIFLES = "ross_rifles"
 export const SPARE_ROOM_FOR_AMMO = "spare_room_for_ammo"
 export const SUPERCHARGED_SHELLS = "supercharged_shells"
 export const TOOLBOXES = "toolboxes"
+export const AIRBURST_SHELLS = "airburst_shells"
 //Commandos
 export const _25_POUNDER_ARTILLERY_BARRAGE = '25_pounder_artillery_barrage'
 export const COMMANDO_FIRE_TEAMS = 'commando_fire_teams'
@@ -106,6 +108,7 @@ export const unlockImageMapping = {
   [SPARE_ROOM_FOR_AMMO]: spare_room_for_ammo,
   [SUPERCHARGED_SHELLS]: supercharged_shells,
   [TOOLBOXES]: toolboxes,
+  [AIRBURST_SHELLS]: airburst_shells,
 
   [_25_POUNDER_ARTILLERY_BARRAGE]: _25_pounder_artillery_barrage,
   [COMMANDO_FIRE_TEAMS]: commando_fire_teams,
