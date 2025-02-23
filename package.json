@@ -67,6 +67,6 @@
     ]
   },
   "scripts": {
-    "build": "cross-env NODE_OPTIONS='--max-old-space-size=8192' webpack --config ./config/webpack/webpack.config.js --loader:.png=file --asset-names=[name]-[hash].digested"
+    "build": "cross-env NODE_OPTIONS='--max-old-space-size=8192' webpack --config ./config/webpack/webpack.config.js"
   }
 }
