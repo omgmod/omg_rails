@@ -115,6 +115,7 @@ export const SquadBuilder = ({}) => {
   const [openTransportDelete, setOpenTransportDelete] = React.useState(false)
   
   const [squadToDelete, setSquadToDelete] = React.useState(null)
+  const [squadUpgradesToDelete, setSquadUpgradesToDelete] = React.useState(null)
   const [transportOfSquadToDelete, setTransportOfSquadToDelete] = React.useState(null)
 
   useEffect(() => {
@@ -140,8 +141,9 @@ export const SquadBuilder = ({}) => {
   };
 
   const handleDeleteAction = () => {
-    dispatch(removeSquad(squadToDelete))
+    destroySquad(squadToDelete, squadUpgradesToDelete)
     setSquadToDelete(null)
+    setSquadUpgradesToDelete(null)
     setOpenDelete(false)
   };
 
@@ -156,9 +158,10 @@ export const SquadBuilder = ({}) => {
   };
 
   const handleTransportDeleteAction = () => {
-    dispatch(removeTransportedSquad({ squadToDelete, transportOfSquadToDelete }))
+    destroySquad(squadToDelete, squadUpgradesToDelete, transportOfSquadToDelete)
     setOpenTransportDelete(false)
     setSquadToDelete(null)
+    setSquadUpgradesToDelete(null)
     setTransportOfSquadToDelete(null)
   };
 
@@ -276,7 +279,7 @@ export const SquadBuilder = ({}) => {
     onSquadSelect(availableUnit.id, newSquad.tab, newSquad.index, newSquad.uuid, newSquad.transportUuid)
   }
 
-  const onSquadDestroy = (squad, squadUpgrades, transportUuid = null) => {
+  const destroySquad = (squad, squadUpgrades, transportUuid = null) => {
     // TODO remove squad id from company if not null
 
     // Calculate total cost to remove from sum of squad and upgrades
@@ -295,23 +298,33 @@ export const SquadBuilder = ({}) => {
     dispatch(removeCost({ id: companyId, pop: pop, man: man, mun: mun, fuel: fuel }))
     dispatch(clearSelectedSquad())
     dispatch(clearSelectedAvailableUnitId())
+
+    if (_.isNull(transportUuid)) {
+      dispatch(removeSquad(squad))
+    } else {
+      dispatch(removeTransportedSquad({ squad, transportUuid }))
+    }
+  }
+
+  const onSquadDestroy = (squad, squadUpgrades, transportUuid = null) => {
     if (_.isNull(transportUuid)) {
       if (squad.vet > 0) {
         setSquadToDelete(squad)
+        setSquadUpgradesToDelete(squadUpgrades)
         handleDeleteOpen()
       } else {
-        dispatch(removeSquad(squad))
+        destroySquad(squad, squadUpgrades)
       }
       
     } else {
       if (squad.vet > 0) {
         setSquadToDelete(squad)
+        setSquadUpgradesToDelete(squadUpgrades)
         setTransportOfSquadToDelete(transportUuid)
         handleTransportDeleteOpen()
       } else {
-        dispatch(removeTransportedSquad({ squad, transportUuid }))
+        destroySquad(squad, squadUpgrades, transportUuid)
       }
-
     }
   }
 
