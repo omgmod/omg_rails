@@ -23,10 +23,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|eot|woff2|woff|ttf|svg)$/i,
-        use: 'file-loader',
-        options: {
-          name: "[name]-[hash].digested.[ext]",
-        },
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name]-[hash].digested.[ext]",
+            },
+          },
+        ],
       },
     ]
   },
