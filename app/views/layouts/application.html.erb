@@ -12,10 +12,9 @@
 
     <%= favicon_link_tag asset_path("favicon.ico") %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'index.js', 'data-turbolinks-track': 'reload' %>
 
-    <%= javascript_tag 'index' %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag 'application.js', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
