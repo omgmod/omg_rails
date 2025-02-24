@@ -58,7 +58,7 @@
   "version": "0.1.0",
   "devDependencies": {},
   "engines": {
-    "node": "18.15.0"
+    "node": "20.13.1"
   },
   "babel": {
     "presets": [
