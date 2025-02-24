@@ -420,7 +420,7 @@ class BattleService
     categories_by_platoons.each do |category, category_platoons|
       # Category_platoons is a hash of category_position (platoon index) to an array of squads
       category_platoons.each do |position, squads|
-        platoon_pop = squads.map(&:pop).sum
+        platoon_pop = squads.map(&:pop).sum(0.0)
         unless platoon_pop == 0 || (CompanyService::MIN_POP_PER_PLATOON <= platoon_pop && platoon_pop <= CompanyService::MAX_POP_PER_PLATOON)
           raise BattleValidationError.new "Platoon at #{category} #{position} has invalid pop #{platoon_pop}"
         end

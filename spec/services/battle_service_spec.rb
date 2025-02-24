@@ -16,7 +16,7 @@ RSpec.describe BattleService do
 
   before do
     available_unit = create :available_unit, company: company, unit: unit1, pop: 10
-    create :squad, company: company, available_unit: available_unit
+    create :squad, company: company, available_unit: available_unit, pop: available_unit.pop
   end
 
   describe "#create_battle" do
