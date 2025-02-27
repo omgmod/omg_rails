@@ -639,6 +639,7 @@ const squadsSlice = createSlice({
             workingSquad = state[tab][index][squadUuid]
           }
           workingSquad.pop += newSquadUpgrade.pop || 0
+          workingSquad.popWithTransported += newSquadUpgrade.pop || 0
           workingSquad.totalModelCount += newSquadUpgrade.addModelCount || 0
           if (transportSquad) {
             transportSquad.popWithTransported += newSquadUpgrade.pop || 0
@@ -675,6 +676,7 @@ const squadsSlice = createSlice({
           }
         }
         squad.pop -= squadUpgrade.pop || 0
+        squad.popWithTransported -= squadUpgrade.pop || 0
         squad.totalModelCount -= squadUpgrade.addModelCount || 0
         if (transport) {
           transport.popWithTransported -= squadUpgrade.pop || 0

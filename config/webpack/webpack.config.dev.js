@@ -32,7 +32,10 @@ module.exports = {
       },
     ]
   },
-  mode: 'production',
+  mode: 'development',
+  optimization: {
+    moduleIds: 'deterministic',
+  },
   entry: {
     application: [
       "./app/javascript/packs/application.js",

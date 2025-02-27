@@ -67,6 +67,7 @@
     ]
   },
   "scripts": {
-    "build": "cross-env NODE_OPTIONS='--max-old-space-size=8192' webpack --config ./config/webpack/webpack.config.js"
+    "build": "webpack --config ./config/webpack/webpack.config.js",
+    "dev": "webpack --config ./config/webpack/webpack.config.dev.js --watch --progress --color"
   }
 }

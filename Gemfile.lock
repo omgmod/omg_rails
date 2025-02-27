@@ -269,8 +269,6 @@ GEM
       rack (>= 0.4)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
-    rack-mini-profiler (2.3.4)
-      rack (>= 1.2.0)
     rack-openid (1.4.2)
       rack (>= 1.1.0)
       ruby-openid (>= 2.1.8)
@@ -466,7 +464,6 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit (~> 2.3)
   rack-cors
-  rack-mini-profiler (~> 2.0)
   rails (~> 7.0.8.1, >= 7.0.1)
   rails-data-migrations
   redis (~> 4.0)
