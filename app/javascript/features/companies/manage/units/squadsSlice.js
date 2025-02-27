@@ -328,7 +328,7 @@ const squadsSlice = createSlice({
       state.isChanged = true
     },
     removeSquad(state, action) {
-      const { uuid, index, tab } = action.payloadF
+      const { uuid, index, tab } = action.payload
       const platoon = state[tab][index]
       if (Object.keys(platoon).includes(uuid)) {
         const squad = platoon[uuid]
