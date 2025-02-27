@@ -311,7 +311,6 @@ const squadsSlice = createSlice({
             transport.transportedSquadUuids = transportedSquadUuids
             transport.usedSquadSlots = usedSquadSlots + 1
             transport.usedModelSlots = usedModelSlots + totalModelCount
-            console.log(transport);
             transport.popWithTransported = parseFloat(transport.popWithTransported) + parseFloat(pop)
           } else {
             // Otherwise, add the squad to the platoon
@@ -677,6 +676,7 @@ const squadsSlice = createSlice({
           }
         }
         squad.pop -= squadUpgrade.pop || 0
+        squad.popWithTransported -= squadUpgrade.pop || 0
         squad.totalModelCount -= squadUpgrade.addModelCount || 0
         if (transport) {
           transport.popWithTransported -= squadUpgrade.pop || 0
