@@ -35,7 +35,8 @@ const useStyles = makeStyles(theme => ({
     paddingRight: "0.5rem"
   },
   messageItem: {
-    maxWidth: "900px"
+    maxWidth: "900px",
+    overflowWrap: "break-word"
   },
   timeItem: {
     paddingLeft: "0.5rem",

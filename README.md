@@ -4,7 +4,7 @@
 ### Ubuntu 20.04
 
 #### Ruby
-Requires Ruby 2.7.4\
+Requires Ruby 3.1.6\
 Follow to setup rbenv and Ruby: https://gorails.com/setup/ubuntu/16.04#ruby-rbenv
 
 1. Install Node.js and Yarn repositories
@@ -29,8 +29,8 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
 
-rbenv install 2.7.4
-rbenv global 2.7.4
+rbenv install 3.1.6
+rbenv global 3.1.6
 ruby -v
 ```
 
@@ -98,7 +98,7 @@ development:
 `bundle exec rails server`
 
 ### Start the webpack dev server
-`./bin/webpack-dev-server`
+`yarn dev`
 
 This allows webpack to recompile assets continually, rather than on page reload.
 
