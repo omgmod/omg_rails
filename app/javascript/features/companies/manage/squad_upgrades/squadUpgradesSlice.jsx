@@ -98,6 +98,10 @@ const squadUpgradesSlice = createSlice({
       .addCase(moveSquad, (state, action) => {
         const { squad, newIndex, newTab } = action.payload
 
+        if (squad.tab === newTab && squad.index === newIndex) {
+          return; // moving within the same tab and index does nothing. Without this guard, squad upgrades break
+        }
+
         // update all squad upgrades for the squad with new tab and index
         const squadUuid = squad.uuid,
           oldTab = squad.tab,
