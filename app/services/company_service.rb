@@ -760,9 +760,10 @@ class CompanyService
       remaining_model_slots = s_unit.transport_model_slots
       matching_transport_uuid = s[:transportedSquadUuids].select do |uuid|
         potential_passenger = squads_by_uuid[uuid]
-        potential_pass_unit = uniq_units_new_by_id[potential_passenger[:unit_id]]
+        potential_passenger_unit_id = potential_passenger[:unit_id]
+        potential_pass_unit = uniq_units_new_by_id[potential_passenger_unit_id]
         valid_passenger_relationship = potential_passenger[:transportUuid] == s[:uuid]
-        valid_transport_allowed_unit = transport_allowed_unit_ids_by_transport_id[s[:unit_id]].include? potential_passenger[:unit_id]
+        valid_transport_allowed_unit = transport_allowed_unit_ids_by_transport_id[s[:unit_id]].include? potential_passenger_unit_id
         valid_squad_slots = (remaining_squad_slots -= 1) >= 0
         valid_model_slots = (remaining_model_slots -= potential_pass_unit.model_count) >= 0
 
