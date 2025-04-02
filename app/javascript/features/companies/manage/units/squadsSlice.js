@@ -383,19 +383,25 @@ const squadsSlice = createSlice({
     moveSquad(state, action) {
       const { squad, unit, newIndex, newTab, targetTransportUuid } = action.payload
 
-      if (squad.tab === newTab && squad.index === newIndex) {
-        return; // moving within the same tab and index does nothing
-      }
-
       const uuid = squad.uuid
       const oldPlatoon = state[squad.tab][squad.index]
       let workingSquad, sourceTransport
       if (_.isNil(squad.transportUuid)) {
         // Not transported
+
+        if (squad.tab === newTab && squad.index === newIndex && _.isNil(targetTransportUuid)) {
+          return; // moving within the same tab and index (and not into a transport) does nothing
+        }
+
         workingSquad = oldPlatoon[uuid]
         delete oldPlatoon[uuid]
       } else {
         // Source is transport
+
+        if (squad.tab === newTab && squad.index === newIndex && squad.transportUuid === targetTransportUuid) {
+          return; // moving within the same tab and index and transport does nothing
+        }
+
         sourceTransport = oldPlatoon[squad.transportUuid]
         workingSquad = sourceTransport.transportedSquads[uuid]
 
