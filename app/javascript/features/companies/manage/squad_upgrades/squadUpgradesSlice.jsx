@@ -10,6 +10,7 @@ import {
 import { CATEGORIES } from "../../../../constants/company";
 import { loadSquadUpgrade } from "./squadUpgrade";
 import { removeNewCompanyOffmap } from "../company_offmaps/companyOffmapsSlice";
+import _ from "lodash";
 
 const find_or_memo = (memo, source, id) => {
   if (id in memo) {
@@ -96,10 +97,19 @@ const squadUpgradesSlice = createSlice({
         state.isChanged = true
       })
       .addCase(moveSquad, (state, action) => {
-        const { squad, newIndex, newTab } = action.payload
+        const { squad, newIndex, newTab, targetTransportUuid } = action.payload
 
-        if (squad.tab === newTab && squad.index === newIndex) {
-          return; // moving within the same tab and index does nothing. Without this guard, squad upgrades break
+        if (_.isNil(squad.transportUuid)) {
+          // Not transported
+          if (squad.tab === newTab && squad.index === newIndex && _.isNil(targetTransportUuid)) {
+            return; // moving within the same tab and index (and not into a transport) does nothing
+          }
+        } else {
+          // Source is transport
+          if (squad.tab === newTab && squad.index === newIndex && squad.transportUuid === targetTransportUuid) {
+            return; // moving within the same tab and index and transport does nothing
+          }
+
         }
 
         // update all squad upgrades for the squad with new tab and index
