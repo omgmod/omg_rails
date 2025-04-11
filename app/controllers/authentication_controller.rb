@@ -3,16 +3,20 @@ class AuthenticationController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token
 
   def steam
-    @player = Player.from_omniauth(request.env["omniauth.auth"])
+    auth = request.env["omniauth.auth"]
 
+    if auth.info.nickname.blank? && auth.info.image.blank?
+      # error scenario with Steam OpenID, retry
+      redirect_to after_omniauth_failure_path_for(resource_name)
+    end
+
+    @player = Player.from_omniauth(auth)
     sign_in_and_redirect @player
   end
 
-  def failure
-    render status: :unauthorized, json: {
-      type: OmniAuth::Utils.camelize(failed_strategy.name),
-      reason: failure_message,
-      error: "You are not authorized to access this resource."
-    }
+  protected
+
+  def after_omniauth_failure_path_for(scope)
+    "/players/auth/steam"
   end
 end

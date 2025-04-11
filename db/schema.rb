@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_02_031543) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_11_224053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -399,7 +399,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_02_031543) do
   end
 
   create_table "players", comment: "Player record", force: :cascade do |t|
-    t.string "name", comment: "Player screen name"
+    t.string "name", null: false, comment: "Player screen name"
     t.text "avatar", comment: "Player avatar url"
     t.string "provider", comment: "Omniauth provider"
     t.string "uid", comment: "Omniauth uid"
