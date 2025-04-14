@@ -7,8 +7,11 @@ class AuthenticationController < Devise::OmniauthCallbacksController
 
     if auth.info.nickname.blank?
       msg = "[AuthenticationController] Received steam omniauth response with null nickname: #{auth}"
+      msg_info = "[AuthenticationController] Auth info hash: #{auth.info}"
       Rails.logger.error(msg)
       Sentry.capture_message(msg)
+      Rails.logger.error(msg_info)
+      Sentry.capture_message(msg_info)
       # error scenario with Steam OpenID, retry
       redirect_to after_omniauth_failure_path_for(resource_name)
     else
