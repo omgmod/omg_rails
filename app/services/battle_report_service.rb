@@ -164,7 +164,7 @@ class BattleReportService < ApplicationService
   # For a company, update available_unit available value
   # This is the minimum of available + resupply and the resupply_max
   def add_company_availability(company)
-    info_logger("Adding available_unit resupply for company #{company.id}")
+    # info_logger("Adding available_unit resupply for company #{company.id}")
     available_units_update = []
     company.available_units.each do |au|
       next if au.unit.disabled?
@@ -176,7 +176,7 @@ class BattleReportService < ApplicationService
       end
     end
 
-    info_logger("Saving #{available_units_update.size} available_unit updates")
+    # info_logger("Saving #{available_units_update.size} available_unit updates")
     AvailableUnit.import!(available_units_update, on_duplicate_key_update: { conflict_target: [:id], columns: [:available] })
   end
 
@@ -185,7 +185,7 @@ class BattleReportService < ApplicationService
   # NOTE: This must be done after availability resupply and autorebuild is done in order to correct over resupply of
   # availability for surviving squads (and avoid exceeding the company max)
   def reconcile_company_unit_available(company)
-    info_logger("Reconciling company squad count + available for company #{company.id}")
+    # info_logger("Reconciling company squad count + available for company #{company.id}")
     available_unit_to_squad_count = company.squads.group(:available_unit_id).count
     available_units_update = []
     company.available_units.each do |au|
@@ -200,7 +200,7 @@ class BattleReportService < ApplicationService
       end
     end
 
-    info_logger("Saving #{available_units_update.size} available_unit updates for unit available reconciliation")
+    # info_logger("Saving #{available_units_update.size} available_unit updates for unit available reconciliation")
     AvailableUnit.import!(available_units_update, on_duplicate_key_update: { conflict_target: [:id], columns: [:available] })
   end
 

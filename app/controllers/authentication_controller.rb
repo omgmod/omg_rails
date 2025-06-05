@@ -6,8 +6,8 @@ class AuthenticationController < Devise::OmniauthCallbacksController
     auth = request.env["omniauth.auth"]
 
     if auth.info.nickname.blank?
-      msg = "[AuthenticationController] Received steam omniauth response with null nickname: #{auth}"
-      msg_info = "[AuthenticationController] Auth info hash: #{auth.info}"
+      msg = "[AuthenticationController] Received steam omniauth response with null nickname: #{auth.to_hash}"
+      msg_info = "[AuthenticationController] AuthHash valid?: #{auth.valid?}, Auth info hash valid?: #{auth.info.valid?}, Auth info hash name: #{auth.info.name}, Auth info hash nickname: #{auth.info.nickname}"
       Rails.logger.error(msg)
       Sentry.capture_message(msg)
       Rails.logger.error(msg_info)
