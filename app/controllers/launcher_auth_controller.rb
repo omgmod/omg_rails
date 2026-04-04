@@ -13,16 +13,7 @@ class LauncherAuthController < ApplicationController
     end
 
     session[:launcher_redirect_uri] = redirect_uri
-    # OmniAuth requires POST to initiate auth (enforced by omniauth-rails_csrf_protection).
-    # Render a self-submitting form that POSTs to the OmniAuth endpoint.
-    render inline: <<~HTML, layout: false
-      <html><body>
-        <form id="auth" action="/players/auth/steam" method="post">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        </form>
-        <script>document.getElementById("auth").submit();</script>
-      </body></html>
-    HTML
+    redirect_to "/players/auth/steam", allow_other_host: true
   end
 
   private
