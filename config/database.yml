@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  host: 192.168.1.142
+  host: localhost
   database: omg_development
   username: <%= ENV.fetch('POSTGRES_USER', "mma")  %>
   password: <%= ENV.fetch('POSTGRES_PASSWORD', "password") %>
