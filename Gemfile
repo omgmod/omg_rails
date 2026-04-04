@@ -131,4 +131,8 @@ gem "turbo-rails", "~> 2.0"
 gem "net-http"
 
 gem "rexml" # Seems needed for heroku to build
+
+# These gems are being removed from Ruby stdlib in 3.4+
+gem "mutex_m"
+gem "drb"
 gem "simple_form", "~> 5.3"
