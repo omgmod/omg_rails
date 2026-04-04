@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Launcher auth: browser OAuth initiation
+  get 'auth/login', to: 'launcher_auth#login'
+
   mount OMG::API => '/'
 
   mount ActionCable.server => '/cable'

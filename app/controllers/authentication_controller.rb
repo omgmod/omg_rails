@@ -16,7 +16,17 @@ class AuthenticationController < Devise::OmniauthCallbacksController
       redirect_to after_omniauth_failure_path_for(resource_name), method: :post
     else
       @player = Player.from_omniauth(auth)
-      sign_in_and_redirect @player
+
+      if session[:launcher_redirect_uri].present?
+        launcher_redirect_uri = session.delete(:launcher_redirect_uri)
+        sign_in @player
+        # Redirect to the launcher's local callback with the player's UID as the authorization code
+        redirect_uri = URI.parse(launcher_redirect_uri)
+        redirect_uri.query = URI.encode_www_form(code: @player.uid)
+        redirect_to redirect_uri.to_s, allow_other_host: true
+      else
+        sign_in_and_redirect @player
+      end
     end
   end
 
