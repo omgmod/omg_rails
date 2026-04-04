@@ -20,6 +20,7 @@ class AuthenticationController < Devise::OmniauthCallbacksController
       if session[:launcher_redirect_uri].present?
         launcher_redirect_uri = session.delete(:launcher_redirect_uri)
         sign_in @player
+        @player.update!(current_sign_in_at: Time.current)
         # Redirect to the launcher's local callback with the player's UID as the authorization code
         redirect_uri = URI.parse(launcher_redirect_uri)
         redirect_uri.query = URI.encode_www_form(code: @player.uid)
