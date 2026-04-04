@@ -1,22 +1,22 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.6'
+ruby '3.3.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.8.1', '>= 7.0.1'
 # Use postgres as the database for Active Record
-gem 'pg', '~> 1.2.3'
+gem 'pg', '~> 1.5'
 # Create data migrations to migrate db content
 gem 'rails-data-migrations'
 # Allow active record to import in bulk
 gem 'activerecord-import'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Pinning to 2.1.0 due to https://github.com/sass/sassc-ruby/issues/189
-gem 'sassc', '2.1.0'
+# sassc pin removed - 2.1.0 doesn't compile on Ubuntu 24.04 (Heroku-24)
+gem 'sassc', '~> 2.4'
 
 gem 'jsbundling-rails'
 
@@ -119,8 +119,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -130,7 +128,11 @@ gem "pundit", "~> 2.3"
 
 gem "sprockets-rails"
 gem "turbo-rails", "~> 2.0"
-gem "net-http", "~> 0.4.1"
+gem "net-http"
 
 gem "rexml" # Seems needed for heroku to build
+
+# These gems are being removed from Ruby stdlib in 3.4+
+gem "mutex_m"
+gem "drb"
 gem "simple_form", "~> 5.3"
