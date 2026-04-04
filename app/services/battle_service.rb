@@ -128,6 +128,7 @@ class BattleService
       # If the battle has all players ready, move to generating state
       if battle.reload.all_players_ready?
         battle.ready!
+        MapSelectionService.new(battle).select_map
         type = PLAYERS_ALL_READY
       else
         type = PLAYER_READY

@@ -5,6 +5,7 @@
 #  id                                                                :bigint           not null, primary key
 #  category_position(Position within the tab the squad is in)        :integer          not null
 #  name(Squad's custom name)                                         :string
+#  pop(Total pop of the squad including unit and all upgrades)       :decimal(, )
 #  tab_category(Tab this squad is in)                                :string           not null
 #  total_model_count(Total model count of the unit and all upgrades) :integer
 #  uuid(Unique uuid)                                                 :string           not null

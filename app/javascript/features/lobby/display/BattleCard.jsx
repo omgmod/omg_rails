@@ -233,6 +233,12 @@ export const BattleCard = ({ id }) => {
         </Box>
       </Box>
       {/*{fullBanner}*/}
+      {battle.map && (
+        <Box sx={{ display: "flex", alignItems: "center", pb: 1 }}>
+          <Typography variant="body1" color="text.secondary" sx={{ mr: 0.5 }}>Map:</Typography>
+          <Typography variant="body1" fontWeight="bold">{battle.map}</Typography>
+        </Box>
+      )}
       {generatingContent}
       {ingameContent}
       <Box className={classes.row}>

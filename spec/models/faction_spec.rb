@@ -5,8 +5,9 @@
 #  id                                                           :bigint           not null, primary key
 #  const_name(Faction CONST name for battlefile)                :string           not null
 #  display_name(Display name)                                   :string           not null
-#  internal_name(Name for internal code use, may not be needed) :string
+#  internal_name(Name for internal code use, may not be needed) :string           not null
 #  name(Raw name)                                               :string           not null
+#  race(In-game race id)                                        :integer
 #  side(Allied or Axis side)                                    :string           not null
 #  created_at                                                   :datetime         not null
 #  updated_at                                                   :datetime         not null

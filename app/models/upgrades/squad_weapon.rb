@@ -6,6 +6,7 @@
 #  additional_model_count(How many model entities this upgrade adds to the base unit) :integer
 #  const_name(Upgrade const name used by the battlefile)                              :string
 #  description(Upgrade description)                                                   :string
+#  disabled(override that disables the upgrade from being purchased or used)          :boolean          default(FALSE), not null
 #  display_name(Display upgrade name)                                                 :string           not null
 #  model_count(How many model entities this unit replacement consists of)             :integer
 #  name(Unique upgrade name)                                                          :string           not null

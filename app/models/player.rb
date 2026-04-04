@@ -8,7 +8,7 @@
 #  current_sign_in_ip                                 :string
 #  last_sign_in_at                                    :datetime
 #  last_sign_in_ip                                    :string
-#  name(Player screen name)                           :string
+#  name(Player screen name)                           :string           not null
 #  provider(Omniauth provider)                        :string
 #  remember_created_at                                :datetime
 #  role(Player role for permissions)                  :string           not null
