@@ -81,20 +81,20 @@ const mapVetoSlice = createSlice({
       })
       .addCase(fetchCompanyVetoes.fulfilled, (state, action) => {
         state.loadingVetoes = false
-        state.companyVetoes = action.payload
+        state.companyVetoes = action.payload || []
       })
       .addCase(fetchCompanyVetoes.rejected, (state, action) => {
         state.loadingVetoes = false
         state.error = action.payload
       })
       .addCase(addVeto.fulfilled, (state, action) => {
-        state.companyVetoes = action.payload
+        state.companyVetoes = action.payload || []
       })
       .addCase(addVeto.rejected, (state, action) => {
         state.error = action.payload
       })
       .addCase(removeVeto.fulfilled, (state, action) => {
-        state.companyVetoes = action.payload
+        state.companyVetoes = action.payload || []
       })
       .addCase(removeVeto.rejected, (state, action) => {
         state.error = action.payload
