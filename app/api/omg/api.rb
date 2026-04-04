@@ -28,6 +28,7 @@ module OMG
       error! e.message
     end
 
+    mount LauncherAuth
     mount Players
     mount Doctrines
     mount Factions

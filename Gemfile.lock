@@ -192,6 +192,8 @@ GEM
     json (2.7.2)
     jsonapi-serializer (2.2.0)
       activesupport (>= 4.2)
+    jwt (3.1.2)
+      base64
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -451,6 +453,7 @@ DEPENDENCIES
   jsbundling-rails
   json
   jsonapi-serializer
+  jwt
   listen (~> 3.3)
   mutex_m
   net-http

@@ -8,8 +8,23 @@ module OMG
       end
 
       def current_player
+        @current_player ||= player_from_jwt || player_from_warden
+      end
+
+      def player_from_warden
         warden = env["warden"]
-        @current_player ||= warden.authenticate
+        warden.authenticate
+      end
+
+      def player_from_jwt
+        header = headers["Authorization"] || env["HTTP_AUTHORIZATION"]
+        return nil unless header&.start_with?("Bearer ")
+
+        token = header.split(" ", 2).last
+        payload = JwtAuthService.decode(token)
+        return nil unless payload
+
+        Player.find_by(id: payload["player_id"])
       end
 
       def authenticate!

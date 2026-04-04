@@ -8,3 +8,8 @@ yarn.lock linguist-generated
 
 # Mark any vendored files as having been vendored.
 vendor/* linguist-vendored
+
+# Force LF line endings for shell scripts (required for WSL/Linux/Heroku)
+bin/* eol=lf
+Procfile eol=lf
+Procfile.dev eol=lf

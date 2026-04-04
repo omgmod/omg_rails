@@ -56,6 +56,9 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'rack-cors'
 
+# JWT for launcher API authentication
+gem 'jwt'
+
 gem 'thor'
 gem "seedbank"
 
