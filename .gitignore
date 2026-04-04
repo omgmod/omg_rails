@@ -18,6 +18,8 @@
 # Ignore Redis persistency dump
 dump.rdb
 
+.gem_rbs_collection
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
