@@ -23,6 +23,7 @@ import rulesetsSlice from "../features/rulesets/rulesetsSlice";
 import statsUnitsSlice from "../features/stats/units/statsUnitsSlice";
 import statsEntitiesSlice from "../features/stats/entities/statsEntitiesSlice";
 import statsWeaponsSlice from "../features/stats/weapons/statsWeaponsSlice";
+import mapVetoSlice from "../features/companies/manage/map_vetoes/mapVetoSlice";
 
 export default configureStore({
   reducer: {
@@ -50,5 +51,6 @@ export default configureStore({
     statsUnits: statsUnitsSlice,
     statsEntities: statsEntitiesSlice,
     statsWeapons: statsWeaponsSlice,
+    mapVetoes: mapVetoSlice,
   },
 })

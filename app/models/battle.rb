@@ -5,6 +5,7 @@
 #  id                                                                   :bigint           not null, primary key
 #  elo_diff(Elo difference between most balanced teams, absolute value) :integer
 #  last_notified(Last time a notification was sent to players)          :datetime
+#  map(Map name)                                                        :string
 #  name(Optional battle name)                                           :string
 #  size(Size of each team)                                              :integer          not null
 #  state(Battle status)                                                 :string           not null

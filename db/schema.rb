@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_11_224053) do
+ActiveRecord::Schema[7.0].define(version: 2026_04_04_200001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -354,6 +354,27 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_11_224053) do
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_historical_player_ratings_on_player_id"
     t.index ["player_name"], name: "index_historical_player_ratings_on_player_name", unique: true
+  end
+
+  create_table "map_vetoes", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "map_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "map_id"], name: "index_map_vetoes_on_company_id_and_map_id", unique: true
+    t.index ["company_id"], name: "index_map_vetoes_on_company_id"
+    t.index ["map_id"], name: "index_map_vetoes_on_map_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string "name", null: false, comment: "Map name from CDN manifest (e.g. 4p_Arras)"
+    t.string "category", default: "competitive", null: false, comment: "Map category: meme or competitive"
+    t.boolean "enabled", default: true, null: false, comment: "Whether this map is in the rotation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_maps_on_category"
+    t.index ["enabled"], name: "index_maps_on_enabled"
+    t.index ["name"], name: "index_maps_on_name", unique: true
   end
 
   create_table "offmaps", force: :cascade do |t|
@@ -828,6 +849,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_11_224053) do
   add_foreign_key "doctrine_unlocks", "unlocks"
   add_foreign_key "doctrines", "factions"
   add_foreign_key "historical_battle_players", "rulesets"
+  add_foreign_key "map_vetoes", "companies"
+  add_foreign_key "map_vetoes", "maps"
   add_foreign_key "offmaps", "rulesets"
   add_foreign_key "player_ratings", "players"
   add_foreign_key "resource_bonuses", "rulesets"

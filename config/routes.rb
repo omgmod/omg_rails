@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
           resources :players
 
+          resources :maps, only: [:index, :update] do
+            collection do
+              post :sync
+            end
+          end
+
           root to: "base#index"
         end
       end

@@ -41,6 +41,7 @@ module OMG
     mount Leaderboard
     mount Rulesets
     mount Stats
+    mount MapVetoes
 
     route :any, '*path' do
       error! "Not implemented", 404

@@ -24,7 +24,9 @@ import { CompactSelector } from "./CompactSelector";
 import { PageContainer } from "../../../components/PageContainer";
 import { SnapshotCreator } from "./SnapshotCreator";
 import HistoryIcon from "@mui/icons-material/History";
+import MapIcon from "@mui/icons-material/Map";
 import { CompanyWarLog } from "./CompanyWarLog";
+import { MapVetoes } from "./map_vetoes/MapVetoes";
 
 const useStyles = makeStyles(theme => ({
   headerRow: {
@@ -91,6 +93,7 @@ const SQUADS = "squads"
 const UNLOCKS = "unlocks"
 const BONUSES = "bonuses"
 const WAR_LOG = "war_log"
+const MAP_VETOES = "map_vetoes"
 const getCurrentUrlTab = (pathname) => {
   const lastPathElement = pathname.split("/").pop()
   switch (lastPathElement) {
@@ -100,6 +103,8 @@ const getCurrentUrlTab = (pathname) => {
       return BONUSES
     case WAR_LOG:
       return WAR_LOG
+    case MAP_VETOES:
+      return MAP_VETOES
     default:
       return SQUADS
   }
@@ -206,12 +211,20 @@ export const CompanyManager = () => {
                to={WAR_LOG}
                className={classes.tab}
                component={Link}/>
+          <Tab key={`company-manager-tab-${MAP_VETOES}`}
+               icon={matches ? <MapIcon/> : null}
+               label={matches ? null : "Map Vetoes"}
+               value={MAP_VETOES}
+               to={MAP_VETOES}
+               className={classes.tab}
+               component={Link}/>
         </Tabs>
         <Routes>
           <Route path="squads" element={<SquadBuilder/>}/>
           <Route path="unlocks" element={<CompanyUnlocks/>}/>
           <Route path="bonuses" element={<CompanyBonuses/>}/>
           <Route path={WAR_LOG} element={<CompanyWarLog/>}/>
+          <Route path={MAP_VETOES} element={<MapVetoes/>}/>
           <Route index element={<SquadBuilder/>}/>
         </Routes>
       </Box>
