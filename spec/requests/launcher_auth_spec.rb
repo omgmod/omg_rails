@@ -2,10 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Launcher Auth", type: :request do
   describe "GET /auth/login" do
-    it "redirects to Steam auth when redirect_uri is valid" do
+    it "renders a form that POSTs to Steam auth when redirect_uri is valid" do
       get "/auth/login", params: { redirect_uri: "http://127.0.0.1:23847/callback" }
-      expect(response).to have_http_status(:redirect)
-      expect(response).to redirect_to("/players/auth/steam")
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include('action="/players/auth/steam"')
+      expect(response.body).to include('method="post"')
     end
 
     it "returns 400 for missing redirect_uri" do
