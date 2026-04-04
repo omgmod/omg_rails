@@ -1,21 +1,19 @@
 # OMGmod Rails
 
 ## Setup
-### Ubuntu 20.04
+### Ubuntu 24.04
 
 #### Ruby
-Requires Ruby 3.1.6\
-Follow to setup rbenv and Ruby: https://gorails.com/setup/ubuntu/16.04#ruby-rbenv
+Requires Ruby 3.3.6\
+Follow to setup rbenv and Ruby: https://gorails.com/setup/ubuntu/24.04#ruby-rbenv
 
 1. Install Node.js and Yarn repositories
 ```
 sudo apt install curl
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get update
-sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs
+npm install -g yarn
 ```
 
 2. Install Ruby with `rbenv`
@@ -29,8 +27,8 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 exec $SHELL
 
-rbenv install 3.1.6
-rbenv global 3.1.6
+rbenv install 3.3.6
+rbenv global 3.3.6
 ruby -v
 ```
 
@@ -97,13 +95,13 @@ development:
 ### Start the server
 `bundle exec rails server`
 
-### Start the webpack dev server
+### Start the JS build in watch mode
 `yarn dev`
 
 This allows webpack to recompile assets continually, rather than on page reload.
 
-### Start both the server and webpack
-`bundle exec foreman start`
+### Start both the server and JS build
+`bin/dev`
 
 ## Development
 
@@ -146,7 +144,7 @@ Create an alias with `alias reset_db='sh reset_db.sh'`
 3. `bin/rails db:environment:set RAILS_ENV=development`
 
 ## Deployment
-### Heroku
+### Heroku (heroku-24 stack)
 
 #### Reset the DB
 Typically need to reset the DB if the seeds change and the entire DB needs to be reseeded.
