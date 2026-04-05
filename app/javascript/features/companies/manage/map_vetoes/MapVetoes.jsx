@@ -46,9 +46,8 @@ export const MapVetoes = () => {
   const vetoedMapIds = companyVetoes.map((m) => m.id)
   const competitiveMaps = maps.filter((m) => m.category === "competitive")
   const memeMaps = maps.filter((m) => m.category === "meme")
-  const competitiveVetoId = companyVetoes.find(
-    (m) => m.category === "competitive"
-  )?.id
+
+  const getSizePrefix = (name) => name.match(/^\d+p/)?.[0]
 
   const handleToggle = (map) => {
     const isVetoed = vetoedMapIds.includes(map.id)
@@ -56,13 +55,21 @@ export const MapVetoes = () => {
     if (isVetoed) {
       dispatch(removeVeto({ companyId, mapId: map.id }))
     } else {
-      if (map.category === "competitive" && competitiveVetoId) {
-        // Remove existing competitive veto first, then add new one
-        dispatch(removeVeto({ companyId, mapId: competitiveVetoId })).then(
-          () => {
-            dispatch(addVeto({ companyId, mapId: map.id }))
-          }
+      if (map.category === "competitive") {
+        const sizePrefix = getSizePrefix(map.name)
+        const existingVeto = sizePrefix && companyVetoes.find(
+          (m) => m.category === "competitive" && getSizePrefix(m.name) === sizePrefix
         )
+        if (existingVeto) {
+          // Remove existing competitive veto for this size first, then add new one
+          dispatch(removeVeto({ companyId, mapId: existingVeto.id })).then(
+            () => {
+              dispatch(addVeto({ companyId, mapId: map.id }))
+            }
+          )
+        } else {
+          dispatch(addVeto({ companyId, mapId: map.id }))
+        }
       } else {
         dispatch(addVeto({ companyId, mapId: map.id }))
       }
@@ -93,14 +100,14 @@ export const MapVetoes = () => {
         Map Vetoes
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-        Veto maps you don't want to play. You can veto one competitive map and
-        any number of meme maps.
+        Veto maps you don't want to play. You can veto one competitive map per
+        size and any number of meme maps.
       </Typography>
 
       <Typography variant="subtitle1" sx={{ mt: 2, mb: 1, fontWeight: "bold" }}>
         Competitive Maps
         <Typography component="span" variant="body2" color="text.secondary" sx={{ ml: 1 }}>
-          (1 veto max)
+          (1 veto per size)
         </Typography>
       </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
